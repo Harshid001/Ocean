@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
+import { CameraRig } from "./components/CameraRig";
 import { ThemeProvider } from "./context/ThemeContext";
 import { useDepth } from "./hooks/useDepth";
 import { InfoCard } from "./components/InfoCard";
@@ -32,6 +33,8 @@ export const App: React.FC = () => {
     <ThemeProvider zone={zone as any}>
       {/* The Canvas takes the whole viewport */}
       <Canvas camera={{ position: [0, 0, depth], near: 0.1, far: 5000 }}>
+        {/* Camera rig driven by scroll depth */}
+        <CameraRig depth={depth} />
         {/* Add lighting for a basic look */}
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={0.5} />
@@ -50,6 +53,8 @@ export const App: React.FC = () => {
         {/* Contact chest that opens the modal */}
         <ContactChest onOpen={() => setContactOpen(true)} />
       </Canvas>
+        {/* Scroll filler for GSAP ScrollTrigger */}
+        <div style={{ height: '4000px' }} />
 
       {/* HUD and modal are regular React components */}
       <DepthHUD />
