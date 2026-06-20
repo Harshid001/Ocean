@@ -8,6 +8,8 @@ import { SonarMenu } from "./components/SonarMenu";
 import { DepthHUD } from "./components/DepthHUD";
 import { TreasureModal } from "./components/TreasureModal";
 import { ContactChest } from "./components/ContactChest";
+import { WaterSurface } from "./components/WaterSurface";
+import { OceanEnvironment } from "./components/OceanEnvironment";
 
 /**
  * Demo application that wires the underwater UI kit together.
@@ -38,6 +40,8 @@ export const App: React.FC = () => {
         {/* Add lighting for a basic look */}
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={0.5} />
+        <OceanEnvironment />
+        <WaterSurface size={30} />
 
         {/* Demo floating card */}
         <InfoCard
